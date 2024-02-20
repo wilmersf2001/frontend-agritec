@@ -1,0 +1,54 @@
+.main{
+  height: 100vh;
+  background-color: #FFFBF5;
+  
+  .content{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    .example-sidenav-content{
+      height: 100vh;
+    
+      mat-toolbar{
+        background-color: #294B29;
+        color: #fff;
+    
+        .logo-pais{
+          display: flex;
+          align-items: center;
+          img{
+            margin-left: 12px;
+          }
+        }
+    
+        .items{
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          a{
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 12px;
+          }
+          a:hover{
+            text-decoration: underline;
+          }
+          
+          .activate{
+            text-decoration: underline;
+          }
+        }
+        
+        .example-spacer {
+          flex: 1 1 auto;
+        }
+
+      }
+    }
+    .contenido{
+      padding: 1rem;
+    }
+  }
+}
