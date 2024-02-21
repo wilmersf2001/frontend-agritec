@@ -29,6 +29,6 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   redirectCreateAccount() {
-    this.router.navigate(['login-comprador']);
+    this.router.navigate(['login-vendedor']);
   }
 }

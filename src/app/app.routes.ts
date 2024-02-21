@@ -6,6 +6,7 @@ import { LoginCompradorComponent } from './pages/login-comprador/login-comprador
 import { EmpresaComponent } from './pages/empresa/empresa.component';
 import { ConsultoriaComponent } from './pages/consultoria/consultoria.component';
 import { ContactanosComponent } from './pages/contactanos/contactanos.component';
+import { DetailsProductComponent } from './pages/details-product/details-product.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'empresa', component: EmpresaComponent },
   { path: 'contactanos', component: ContactanosComponent },
   { path: 'consultoria', component: ConsultoriaComponent },
+  { path: 'details-product', component: DetailsProductComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: '**', redirectTo: '/inicio' },
 ];
