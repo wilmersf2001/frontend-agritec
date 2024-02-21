@@ -1,0 +1,15 @@
+<div class="container">
+  <span class="message" matSnackBarLabel> {{ message }}</span>
+  <button
+    mat-icon-button
+    class="small-button"
+    (click)="snackBarRef.dismissWithAction()"
+  >
+    <div
+      class="close"
+      [ngClass]="{ error: icon == 'close', done: icon == 'done' }"
+    >
+      <mat-icon class="small-icon">{{ icon }}</mat-icon>
+    </div>
+  </button>
+</div>

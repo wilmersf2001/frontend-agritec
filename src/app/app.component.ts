@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -24,4 +25,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class AppComponent {
   title = 'frontend-agritec';
   showFiller = false;
+
+  constructor(private router: Router) {}
+
+  redirectCreateAccount() {
+    this.router.navigate(['login-comprador']);
+  }
 }

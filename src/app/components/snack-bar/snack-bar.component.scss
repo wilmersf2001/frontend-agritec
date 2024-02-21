@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .message{
+    color: #fff;
+  }
+
+  .small-button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .3rem;
+
+    .close{
+      color: #FF004D;
+
+      .small-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+    
+    .error{
+      color: #FF004D;
+    }
+    .done{
+      color: #00FF00;
+    }
+    
+    &:hover {
+      background-color: #3b3436;
+    }
+  }
+}

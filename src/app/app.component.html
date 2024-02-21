@@ -38,10 +38,18 @@
           </div>
           <span class="example-spacer"></span>
           <div class="items">
-            <a href="#"> Iniciar sesión </a>
-            <a href="#"> Crear cuenta </a>
+            <a routerLink="login" routerLinkActive="activate">
+              Iniciar sesión
+            </a>
+            <a routerLink="login-comprador" routerLinkActive="activate">
+              Crear cuenta
+            </a>
           </div>
-          <button mat-icon-button aria-label="Example icon-button">
+          <button
+            mat-icon-button
+            aria-label="Example icon-button"
+            (click)="redirectCreateAccount()"
+          >
             <mat-icon>account_circle</mat-icon>
           </button>
           <button mat-icon-button aria-label="Example icon-button">

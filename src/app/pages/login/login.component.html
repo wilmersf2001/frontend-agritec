@@ -1,1 +1,74 @@
-<p>login works!</p>
+<!-- <app-header-inicio></app-header-inicio> -->
+<div class="container">
+  <div class="regresar">
+    <button mat-fab color="primary" aria-label="REGRESAR" (click)="goBack()">
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="barra-color">
+      <div class="azul"></div>
+      <div class="celeste"></div>
+      <div class="amarillo"></div>
+      <div class="plomo"></div>
+    </div>
+
+    <header>
+      <div class="logo-unprg">
+        <img src="assets/images/logo.jpg" alt="UNPRG" />
+      </div>
+      <div class="title">BIENVENIDO AGRITEC</div>
+      <div class="subtitle">INICIAR SESIÓN</div>
+    </header>
+    <div class="card-container">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Introduce tu usuario</mat-label>
+          <input matInput formControlName="usuario" />
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Introduce tu contraseña</mat-label>
+          <input
+            matInput
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'hidePassword password'"
+            [attr.aria-pressed]="hidePassword"
+          >
+            <mat-icon>{{
+              hidePassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <button mat-raised-button color="primary">Ingresar</button>
+      </form>
+      <mat-divider></mat-divider>
+      <div class="enlaces">
+        <a routerLink="https://www.unprg.edu.pe/univ/portal/index.php">
+          <mat-icon>school</mat-icon>
+        </a>
+        <a routerLink="https://www.unprg.edu.pe/univ/portal/index.php">
+          <mat-icon>public</mat-icon>
+        </a>
+        <a routerLink="https://www.unprg.edu.pe/univ/portal/index.php">
+          <mat-icon>thumb_up</mat-icon>
+        </a>
+      </div>
+    </div>
+    <footer>
+      @if(loading){
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      }
+    </footer>
+  </div>
+</div>
