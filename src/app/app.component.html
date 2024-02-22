@@ -17,7 +17,7 @@
           </button>
           <span routerLink="inicio" style="cursor: pointer">AGRITEC</span>
           <div class="logo-pais">
-            <img src="assets/images/peru_logo.png" alt="LOGO PERU" width="40" />
+            <img src="assets/images/peru_logo.png" alt="LOGO PERU" width="30" />
           </div>
           <div class="items">
             <a routerLink="empresa" routerLinkActive="activate">
@@ -31,6 +31,7 @@
             </a>
           </div>
           <span class="example-spacer"></span>
+          @if(!isLogged){
           <div class="items">
             <a routerLink="login" routerLinkActive="activate">
               Iniciar sesión
@@ -39,13 +40,24 @@
               Crear cuenta
             </a>
           </div>
+          } @if(statusLogged | async){
+          <div class="user">
+            <p>{{ userLogged.nombres }} {{ userLogged.apellidos }}</p>
+          </div>
+          }
           <button
             mat-icon-button
+            [matMenuTriggerFor]="menu"
             aria-label="Example icon-button"
             (click)="redirectCreateAccount()"
           >
             <mat-icon>account_circle</mat-icon>
           </button>
+          <mat-menu #menu="matMenu">
+            <button (click)="logout()" mat-menu-item>
+              <mat-icon>logout</mat-icon> salir
+            </button>
+          </mat-menu>
           <button mat-icon-button aria-label="Example icon-button">
             <mat-icon>shopping_cart</mat-icon>
           </button>

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,7 +19,6 @@ import { SnackBarComponent } from '../../components/snack-bar/snack-bar.componen
     MatIconModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatDividerModule,
     MatProgressBarModule,
     MatInputModule,
     MatButtonModule,
@@ -54,7 +52,7 @@ export class LoginComponent {
     this.authService
       .login(this.form.value)
       .then(() => {
-        this.router.navigate(['app/inicio']);
+        this.router.navigate(['inicio']);
       })
       .catch(() => {
         this.form.reset();

@@ -40,6 +40,20 @@
             text-decoration: underline;
           }
         }
+
+        .user{
+          border: 1px solid #fff;
+          border-radius: 22px;
+          padding: 0 10px;
+          background-color: #CCD3CA;
+          color: #294B29;
+
+          p{
+            margin: 0;
+            font-size: 12px;
+            line-height: 22px;
+          }
+        }
         
         .example-spacer {
           flex: 1 1 auto;
