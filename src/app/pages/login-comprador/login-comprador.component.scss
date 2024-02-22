@@ -6,8 +6,8 @@
     
     .create-account{
       width: 850px;
-      border-radius: 22px;
-      background-color: #e8f1e3;
+      border: 1px solid #ccc;
+      border-radius: 5px;
 
       header{
         display: flex;
@@ -18,26 +18,12 @@
           margin: 0;
           font-weight: 500;
         }
-        p{
-          margin: 0;
-          color: #1A5D1A;
-          font-size: 13px;
-
-          a{
-            color: #1A5D1A;
-            text-decoration: none;
-            font-weight: 500;
-          }
-          a:hover{
-            text-decoration: underline;
-          }
-        }
       }
 
       .anuncio{
         display: flex;
         background-color: #9AD0C2;
-        margin: 1rem 2rem;
+        margin: 1rem 3rem;
         padding: 1rem;
         border-radius: 22px;
         align-items: center;
@@ -54,10 +40,29 @@
             object-fit: cover;
           }
         }
+        .message{
+          h2{
+            text-align: center;
+            margin-bottom: .5rem;
+            font-weight: 500;
+          }
+          p{
+            padding: 0 2rem;
+            text-align: center;
+            margin: 0;
+            font-size: 13px;
+          }
+        }
       }
 
       form{
         padding: 1rem 2rem;
+
+        h4{
+          margin: 0;
+          font-weight: 500;
+          margin-bottom: .5rem;
+        }
 
         .row{
           display: flex;

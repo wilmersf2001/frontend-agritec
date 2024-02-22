@@ -1,0 +1,242 @@
+<div class="sidenav">
+  <header>
+    <div class="logo-agritec">
+      <img src="assets/images/logo.jpg" />
+    </div>
+    <div class="agritec-name">
+      <p>AGRITEC</p>
+      <div class="oneline">
+        <div class="status-indicator">
+          <div></div>
+        </div>
+        <span>Wilmer Yoel</span>
+      </div>
+    </div>
+  </header>
+  <div class="barra-color">
+    <div class="azul"></div>
+    <div class="celeste"></div>
+  </div>
+  <div class="sidenav-content">
+    <ul>
+      <li>
+        <div class="item">
+          <a
+            routerLink="inicio"
+            routerLinkActive="router-link-active"
+            (click)="openedSubMenu = null"
+          >
+            <mat-icon>home</mat-icon>
+            <span>inicio</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="item">
+          <a
+            routerLink="enviar-correos"
+            routerLinkActive="router-link-active"
+            (click)="openedSubMenu = null"
+          >
+            <mat-icon>mail</mat-icon>
+            <span>Enviar correos</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="item">
+          <a
+            routerLink="postulante/modificar"
+            (click)="toggleSubMenu('postulante')"
+            [ngClass]="{ 'item-active': openedSubMenu === 'postulante' }"
+          >
+            <mat-icon>person</mat-icon>
+            <span>Postulante</span>
+          </a>
+          <div
+            class="submenu"
+            [ngClass]="{ open: openedSubMenu === 'postulante' }"
+          >
+            <ul>
+              <li>
+                <div class="submenu-item">
+                  <a
+                    routerLink="postulante/modificar"
+                    routerLinkActive="router-link-active"
+                  >
+                    Modificar datos
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div class="submenu-item">
+                  <a
+                    routerLink="postulante/ficha-inscripcion"
+                    routerLinkActive="router-link-active"
+                  >
+                    ficha de inscripción
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item">
+          <a
+            routerLink="usuarios"
+            routerLinkActive="router-link-active"
+            (click)="openedSubMenu = null"
+          >
+            <mat-icon>group</mat-icon>
+            <span>Usuarios</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="item">
+          <a
+            routerLink="procesos"
+            routerLinkActive="router-link-active"
+            (click)="openedSubMenu = null"
+          >
+            <mat-icon>settings</mat-icon>
+            <span>Procesos de admisión</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="item">
+          <a
+            routerLink="banco/subir-txt"
+            (click)="toggleSubMenu('banco')"
+            [ngClass]="{ 'item-active': openedSubMenu === 'banco' }"
+          >
+            <mat-icon>paid</mat-icon>
+            <span>Pagos banco</span>
+          </a>
+          <div class="submenu" [ngClass]="{ open: openedSubMenu === 'banco' }">
+            <ul>
+              <li>
+                <div class="submenu-item">
+                  <a
+                    routerLink="banco/subir-txt"
+                    routerLinkActive="router-link-active"
+                  >
+                    Subir archivo txt
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div class="submenu-item">
+                  <a
+                    routerLink="banco/listar-txt"
+                    routerLinkActive="router-link-active"
+                  >
+                    listar archivos txt
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item">
+          <a
+            routerLink="vacantes/asignar"
+            (click)="toggleSubMenu('vacantes')"
+            [ngClass]="{ 'item-active': openedSubMenu === 'vacantes' }"
+          >
+            <mat-icon>supervised_user_circle</mat-icon>
+            <span>Vacantes</span>
+          </a>
+          <div
+            class="submenu"
+            [ngClass]="{ open: openedSubMenu === 'vacantes' }"
+          >
+            <ul>
+              <li>
+                <div class="submenu-item">
+                  <a
+                    routerLink="vacantes/asignar"
+                    routerLinkActive="router-link-active"
+                  >
+                    Asignar vacantes
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div class="submenu-item">
+                  <a
+                    routerLink="vacantes/listar"
+                    routerLinkActive="router-link-active"
+                  >
+                    listar vacantes
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item">
+          <a
+            routerLink="reportes/pagos-realizados"
+            (click)="toggleSubMenu('reportes')"
+            [ngClass]="{ 'item-active': openedSubMenu === 'reportes' }"
+          >
+            <mat-icon>description</mat-icon>
+            <span>Reportes</span>
+          </a>
+          <div
+            class="submenu"
+            [ngClass]="{ open: openedSubMenu === 'reportes' }"
+          >
+            <ul>
+              <li>
+                <div class="submenu-item">
+                  <a
+                    routerLink="reportes/pagos-realizados"
+                    routerLinkActive="router-link-active"
+                  >
+                    Pagos realizados
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div class="submenu-item">
+                  <a
+                    routerLink="reportes/postulantes-inscritos"
+                    routerLinkActive="router-link-active"
+                  >
+                    Postulantes inscritos
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <footer>
+      <div class="logout">
+        <div class="user-name">
+          <mat-icon>account_circle</mat-icon>
+          <div>Suclupe Farroñan Wilmer Yoel</div>
+        </div>
+        <button
+          mat-icon-button
+          matTooltip="salir"
+          matTooltipPosition="right"
+          class="small-button"
+          (click)="logout()"
+        >
+          <mat-icon class="small-icon">logout</mat-icon>
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>

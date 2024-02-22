@@ -7,6 +7,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Router } from '@angular/router';
 
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,13 +20,13 @@ import { Router } from '@angular/router';
     MatSidenavModule,
     RouterLink,
     RouterLinkActive,
+    SidebarComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'frontend-agritec';
-  showFiller = false;
 
   constructor(private router: Router) {}
 

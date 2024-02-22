@@ -69,8 +69,4 @@ export class LoginComponent {
       data: { message: 'Credenciales incorrectas', icon: 'close' },
     });
   }
-
-  goBack() {
-    this.router.navigate(['']);
-  }
 }

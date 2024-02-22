@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-comprador',
@@ -22,4 +23,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 })
 export class LoginCompradorComponent {
   hide = true;
+
+  constructor(private router: Router) {}
 }
