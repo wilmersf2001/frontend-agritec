@@ -15,6 +15,7 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 //COMPONENTS
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     RouterLinkActive,
     SidebarComponent,
     MatMenuModule,
+    SidebarAdminComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

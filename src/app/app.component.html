@@ -2,7 +2,13 @@
   <div class="content">
     <mat-drawer-container class="example-container" autosize>
       <mat-drawer #drawer class="example-sidenav" mode="side">
+        @if(statusLogged | async) { @if(userLogged.role === 'admin') {
+        <app-sidebar-admin></app-sidebar-admin>
+        }@else {
         <app-sidebar></app-sidebar>
+        } }@else {
+        <app-sidebar></app-sidebar>
+        }
       </mat-drawer>
 
       <div class="example-sidenav-content">
@@ -15,7 +21,8 @@
           >
             <mat-icon>menu</mat-icon>
           </button>
-          <span routerLink="inicio" style="cursor: pointer">AGRITEC</span>
+          @if((statusLogged | async) && (userLogged.role === 'admin')){} @else
+          {<span routerLink="inicio" style="cursor: pointer">AGRITEC</span>
           <div class="logo-pais">
             <img src="assets/images/peru_logo.png" alt="LOGO PERU" width="30" />
           </div>
@@ -30,6 +37,7 @@
               Consultoría
             </a>
           </div>
+          }
           <span class="example-spacer"></span>
           @if(!isLogged){
           <div class="items">
@@ -44,7 +52,7 @@
           <div class="user">
             <p>{{ userLogged.nombres }} {{ userLogged.apellidos }}</p>
           </div>
-          }
+          } @if(statusLogged | async){
           <button
             mat-icon-button
             [matMenuTriggerFor]="menu"
@@ -58,6 +66,7 @@
               <mat-icon>logout</mat-icon> salir
             </button>
           </mat-menu>
+          }
           <button mat-icon-button aria-label="Example icon-button">
             <mat-icon>shopping_cart</mat-icon>
           </button>
