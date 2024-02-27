@@ -22,24 +22,4 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
-export class SidebarComponent {
-  openedSubMenu: string | null = null;
-
-  toggleSubMenu(item: string): void {
-    if (this.openedSubMenu === item) {
-      this.openedSubMenu = null;
-    } else {
-      this.openedSubMenu = item;
-    }
-  }
-
-  getUserLogged() {
-    /* this.userService.getUserLogged().subscribe((res: any) => {
-      this.userLogged = res.data;
-    }); */
-  }
-
-  logout() {
-    /* this.authService.logout(); */
-  }
-}
+export class SidebarComponent {}

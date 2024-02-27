@@ -15,11 +15,7 @@
     <ul>
       <li>
         <div class="item">
-          <a
-            routerLink="inicio"
-            routerLinkActive="router-link-active"
-            (click)="openedSubMenu = null"
-          >
+          <a routerLink="inicio" routerLinkActive="router-link-active">
             <div>
               <mat-icon>smart_toy</mat-icon>
             </div>
@@ -27,13 +23,10 @@
           </a>
         </div>
       </li>
+
       <li>
         <div class="item">
-          <a
-            routerLink="enviar-correos"
-            routerLinkActive="router-link-active"
-            (click)="openedSubMenu = null"
-          >
+          <a routerLink="empresa" routerLinkActive="router-link-active">
             <mat-icon>precision_manufacturing</mat-icon>
             <span>Robots de Cosecha</span>
           </a>
@@ -41,50 +34,15 @@
       </li>
       <li>
         <div class="item">
-          <a
-            routerLink="postulante/modificar"
-            (click)="toggleSubMenu('postulante')"
-            [ngClass]="{ 'item-active': openedSubMenu === 'postulante' }"
-          >
+          <a routerLink="empresa" routerLinkActive="router-link-active">
             <mat-icon>smart_toy</mat-icon>
             <span>Robots de Desmalezado</span>
           </a>
-          <div
-            class="submenu"
-            [ngClass]="{ open: openedSubMenu === 'postulante' }"
-          >
-            <ul>
-              <li>
-                <div class="submenu-item">
-                  <a
-                    routerLink="postulante/modificar"
-                    routerLinkActive="router-link-active"
-                  >
-                    Modificar datos
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div class="submenu-item">
-                  <a
-                    routerLink="postulante/ficha-inscripcion"
-                    routerLinkActive="router-link-active"
-                  >
-                    ficha de inscripción
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
         </div>
       </li>
       <li>
         <div class="item">
-          <a
-            routerLink="usuarios"
-            routerLinkActive="router-link-active"
-            (click)="openedSubMenu = null"
-          >
+          <a routerLink="empresa" routerLinkActive="router-link-active">
             <div>
               <mat-icon>support_agent</mat-icon>
             </div>
@@ -94,11 +52,7 @@
       </li>
       <li>
         <div class="item">
-          <a
-            routerLink="procesos"
-            routerLinkActive="router-link-active"
-            (click)="openedSubMenu = null"
-          >
+          <a routerLink="empresa" routerLinkActive="router-link-active">
             <mat-icon>water_drop</mat-icon>
             <span>Robots de Riego</span>
           </a>
@@ -106,122 +60,32 @@
       </li>
       <li>
         <div class="item">
-          <a
-            routerLink="banco/subir-txt"
-            (click)="toggleSubMenu('banco')"
-            [ngClass]="{ 'item-active': openedSubMenu === 'banco' }"
-          >
+          <a routerLink="empresa" routerLinkActive="router-link-active">
             <div>
               <mat-icon>health_and_safety</mat-icon>
             </div>
             <span>Robots de Protección de Cultivos</span>
           </a>
-          <div class="submenu" [ngClass]="{ open: openedSubMenu === 'banco' }">
-            <ul>
-              <li>
-                <div class="submenu-item">
-                  <a
-                    routerLink="banco/subir-txt"
-                    routerLinkActive="router-link-active"
-                  >
-                    Subir archivo txt
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div class="submenu-item">
-                  <a
-                    routerLink="banco/listar-txt"
-                    routerLinkActive="router-link-active"
-                  >
-                    listar archivos txt
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
         </div>
       </li>
       <li>
         <div class="item">
-          <a
-            routerLink="vacantes/asignar"
-            (click)="toggleSubMenu('vacantes')"
-            [ngClass]="{ 'item-active': openedSubMenu === 'vacantes' }"
-          >
+          <a routerLink="empresa" routerLinkActive="router-link-active">
             <div>
               <mat-icon>analytics</mat-icon>
             </div>
             <span>Robots de Manejo del Suelo</span>
           </a>
-          <div
-            class="submenu"
-            [ngClass]="{ open: openedSubMenu === 'vacantes' }"
-          >
-            <ul>
-              <li>
-                <div class="submenu-item">
-                  <a
-                    routerLink="vacantes/asignar"
-                    routerLinkActive="router-link-active"
-                  >
-                    Asignar vacantes
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div class="submenu-item">
-                  <a
-                    routerLink="vacantes/listar"
-                    routerLinkActive="router-link-active"
-                  >
-                    listar vacantes
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
         </div>
       </li>
       <li>
         <div class="item">
-          <a
-            routerLink="reportes/pagos-realizados"
-            (click)="toggleSubMenu('reportes')"
-            [ngClass]="{ 'item-active': openedSubMenu === 'reportes' }"
-          >
+          <a routerLink="empresa" routerLinkActive="router-link-active">
             <div>
               <mat-icon>egg_alt</mat-icon>
             </div>
             <span>Robots de Vigilancia y Seguridad</span>
           </a>
-          <div
-            class="submenu"
-            [ngClass]="{ open: openedSubMenu === 'reportes' }"
-          >
-            <ul>
-              <li>
-                <div class="submenu-item">
-                  <a
-                    routerLink="reportes/pagos-realizados"
-                    routerLinkActive="router-link-active"
-                  >
-                    Pagos realizados
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div class="submenu-item">
-                  <a
-                    routerLink="reportes/postulantes-inscritos"
-                    routerLinkActive="router-link-active"
-                  >
-                    Postulantes inscritos
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
         </div>
       </li>
     </ul>
