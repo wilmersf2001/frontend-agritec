@@ -1,35 +1,125 @@
 <div class="container">
-  <section class="imagen">
-    <img src="assets/images/fondo_inicio.png" alt="Imagen de inicio" />
-  </section>
-  <section class="slogan">
-    <h1>Revolucionando la Agricultura con Tecnología Robótica</h1>
-    <p>
-      Encuentra la mejor solución para tu cultivo con nuestra tecnología de
-      punta y nuestros robots inteligentes. ¡No esperes más y únete a la
-      revolución!
-    </p>
+  <section class="inicio-slogan">
+    <section class="slogan">
+      <h1>Revolucionando la Agricultura con Tecnología Robótica</h1>
+      <img src="assets/images/logo.jpg" alt="" width="100" height="100" />
+      <p>
+        Encuentra la mejor solución para tu cultivo con nuestra tecnología de
+        punta y nuestros robots inteligentes. ¡No esperes más y únete a la
+        revolución!
+      </p>
+    </section>
+    <section class="imagen">
+      <img src="assets/images/fondo_inicio.png" alt="Imagen de inicio" />
+    </section>
   </section>
   <section class="productos">
-    <div class="subtitle">ULTIMAS NOVEDADES</div>
+    <div class="subtitle">
+      <h2>Productos Destacados</h2>
+    </div>
     <div class="row">
       <mat-card class="example-card">
         <img
+          class="img-card"
           mat-card-image
-          src="https://definicion.de/wp-content/uploads/2013/03/perro-1.jpg"
+          src="assets/images/robot1.png"
           alt="Photo of a Shiba Inu"
         />
         <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz
-            breeds of dog from Japan. A small, agile dog that copes very well
-            with mountainous terrain, the Shiba Inu was originally bred for
-            hunting.
-          </p>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>
+            The Shiba Inu is the smallest of the six original and distinct.
+          </mat-card-subtitle>
+          <div class="precio">
+            <div class="unidad">S/.</div>
+            <div class="monto">1000.99</div>
+          </div>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button (click)="rediredDetails()">Detalles</button>
+          <button mat-raised-button (click)="rediredDetails()">
+            <mat-icon>add</mat-icon> Detalles
+          </button>
+          <button mat-raised-button color="primary">
+            <mat-icon>shopping_cart</mat-icon> Añadir al carrito
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card class="example-card">
+        <img
+          class="img-card"
+          mat-card-image
+          src="assets/images/robot1.png"
+          alt="Photo of a Shiba Inu"
+        />
+        <mat-card-content>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>
+            The Shiba Inu is the smallest of the six original and distinct.
+          </mat-card-subtitle>
+          <div class="precio">
+            <div class="unidad">S/.</div>
+            <div class="monto">1000.99</div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="rediredDetails()">
+            <mat-icon>add</mat-icon> Detalles
+          </button>
+          <button mat-raised-button color="primary">
+            <mat-icon>shopping_cart</mat-icon> Añadir al carrito
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card class="example-card">
+        <img
+          class="img-card"
+          mat-card-image
+          src="assets/images/robot1.png"
+          alt="Photo of a Shiba Inu"
+        />
+        <mat-card-content>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>
+            The Shiba Inu is the smallest of the six original and distinct.
+          </mat-card-subtitle>
+          <div class="precio">
+            <div class="unidad">S/.</div>
+            <div class="monto">1000.99</div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="rediredDetails()">
+            <mat-icon>add</mat-icon> Detalles
+          </button>
+          <button mat-raised-button color="primary">
+            <mat-icon>shopping_cart</mat-icon> Añadir al carrito
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card class="example-card">
+        <img
+          class="img-card"
+          mat-card-image
+          src="assets/images/robot1.png"
+          alt="Photo of a Shiba Inu"
+        />
+        <mat-card-content>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>
+            The Shiba Inu is the smallest of the six original and distinct.
+          </mat-card-subtitle>
+          <div class="precio">
+            <div class="unidad">S/.</div>
+            <div class="monto">1000.99</div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="rediredDetails()">
+            <mat-icon>add</mat-icon> Detalles
+          </button>
+          <button mat-raised-button color="primary">
+            <mat-icon>shopping_cart</mat-icon> Añadir al carrito
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>

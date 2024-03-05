@@ -16,43 +16,78 @@
         </p>
       </div>
     </div>
-    <form action="">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <h4>Completa tus Datos</h4>
       <div class="row">
         <mat-form-field appearance="outline">
           <mat-label>Nombres</mat-label>
-          <input matInput placeholder="Placeholder" />
+          <input matInput placeholder="Placeholder" formControlName="nombres" />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          @if (getFieldInvalid('nombres')) {
+          <mat-error>
+            Nombres es un campo <strong>requerido</strong>
+          </mat-error>
+          }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Apellidos</mat-label>
-          <input matInput placeholder="Placeholder" />
+          <input
+            matInput
+            placeholder="Placeholder"
+            formControlName="apellidos"
+          />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          @if (getFieldInvalid('apellidos')) {
+          <mat-error>
+            Apellidos es un campo <strong>requerido</strong>
+          </mat-error>
+          }
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field appearance="outline">
           <mat-label>Correo Electrónico</mat-label>
-          <input matInput placeholder="Placeholder" />
+          <input matInput placeholder="Placeholder" formControlName="email" />
           <mat-icon matSuffix>alternate_email</mat-icon>
+          @if (getFieldInvalid('email')) {
+          <mat-error> Correo es un campo <strong>requerido</strong> </mat-error>
+          }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Teléfono</mat-label>
-          <input matInput placeholder="Placeholder" />
+          <input
+            matInput
+            placeholder="Placeholder"
+            formControlName="telefono"
+          />
           <mat-icon matSuffix>phone_enabled</mat-icon>
+          @if (getFieldInvalid('telefono')) {
+          <mat-error>
+            Teléfono es un campo <strong>requerido</strong>
+          </mat-error>
+          }
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field appearance="outline">
           <mat-label>Usuario</mat-label>
-          <input matInput placeholder="Placeholder" />
+          <input matInput placeholder="Placeholder" formControlName="usuario" />
           <mat-icon matSuffix>person</mat-icon>
+          @if (getFieldInvalid('usuario')) {
+          <mat-error>
+            Usuario es un campo <strong>requerido</strong>
+          </mat-error>
+          }
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Contraseña</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" />
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+          />
           <button
             type="button"
             mat-icon-button
@@ -63,6 +98,11 @@
           >
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
+          @if (getFieldInvalid('password')) {
+          <mat-error>
+            Password es un campo <strong>requerido</strong>
+          </mat-error>
+          }
         </mat-form-field>
       </div>
       <div class="row">
