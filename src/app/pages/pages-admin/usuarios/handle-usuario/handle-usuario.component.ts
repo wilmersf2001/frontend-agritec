@@ -18,7 +18,11 @@ import { UserService } from '../../../../services/user.service';
 import { SnackBarComponent } from '../../../../components/snack-bar/snack-bar.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DialogData } from '../../../../interfaces/dialog-data';
+
+export interface DialogData {
+  usuario: User;
+  action: string;
+}
 
 @Component({
   selector: 'app-handle-usuario',
@@ -43,6 +47,7 @@ export class HandleUsuarioComponent {
   form!: FormGroup;
   actionLoading: boolean = false;
   loading = false;
+  hidePassword = true;
 
   constructor(
     public dialogRef: MatDialogRef<HandleUsuarioComponent>,
@@ -58,18 +63,22 @@ export class HandleUsuarioComponent {
         this.$actionDetails = ACTION_DETAILS[ACTIONS.CREATE];
         this.form = this.fb.group({
           nombres: [''],
-          apellido: [''],
+          apellidos: [''],
+          email: [''],
+          telefono: [''],
           usuario: [''],
           password: [''],
+          role: ['admin'],
         });
         break;
       case ACTIONS.UPDATE:
         this.$actionDetails = ACTION_DETAILS[ACTIONS.UPDATE];
         this.form = this.fb.group({
           nombres: [this.$user.nombres],
-          apellido: [this.$user.apellidos],
+          apellidos: [this.$user.apellidos],
+          email: [this.$user.email],
+          telefono: [this.$user.telefono],
           usuario: [this.$user.usuario],
-          password: [''],
         });
         break;
       case ACTIONS.DELETE:
@@ -89,14 +98,26 @@ export class HandleUsuarioComponent {
     this.actionLoading = true;
     switch (action) {
       case ACTIONS.CREATE:
-        console.log('Creando usuario');
+        this.userService
+          .crearCuenta(this.form.value)
+          .then((res) => {
+            this.closeModal();
+            this.openSnackBar();
+          })
+          .catch((err) => {
+            console.log('Error al crear usuario', err);
+          });
         break;
       case ACTIONS.UPDATE:
-        console.log('Actualizando usuario');
+        this.userService
+          .updateUser(this.$user.id, this.form.value)
+          .subscribe((res) => {
+            this.closeModal();
+            this.openSnackBar();
+          });
         break;
       case ACTIONS.DELETE:
         this.userService.deleteUser(this.$user.id).subscribe((res) => {
-          console.log('Usuario eliminado', res);
           this.closeModal();
           this.openSnackBar();
         });
