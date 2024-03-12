@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="add">
+    <button mat-raised-button color="primary" (click)="openDialog('CREATE')">
+      <mat-icon>add</mat-icon> Agregar
+    </button>
+  </div>
+
+  @if(loading){
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+  } @else {
+  <div class="table" [@fadeInAnimation]>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let user; let i = index">{{ i + 1 }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombres">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let user">{{ user.nombres }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="apellidos">
+        <th mat-header-cell *matHeaderCellDef>Apellidos</th>
+        <td mat-cell *matCellDef="let user">{{ user.apellidos }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="telefono">
+        <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+        <td mat-cell *matCellDef="let user">{{ user.telefono }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="usuario">
+        <th mat-header-cell *matHeaderCellDef>Usuario</th>
+        <td mat-cell *matCellDef="let user">{{ user.usuario }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Usuario</th>
+        <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="rol">
+        <th mat-header-cell *matHeaderCellDef>Rol</th>
+        <td mat-cell *matCellDef="let user">{{ user.role }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acción</th>
+        <td mat-cell *matCellDef="let user">
+          <div class="escritorio">
+            <button
+              mat-icon-button
+              matTooltip="editar"
+              matTooltipPosition="above"
+              class="small-button"
+              (click)="openDialog('UPDATE', user)"
+            >
+              <mat-icon color="primary" class="small-icon">edit</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              matTooltip="eliminar"
+              matTooltipPosition="right"
+              class="small-button"
+              (click)="openDialog('DELETE', user)"
+            >
+              <mat-icon color="warn" class="small-icon">delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <mat-paginator
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+  }
+</div>

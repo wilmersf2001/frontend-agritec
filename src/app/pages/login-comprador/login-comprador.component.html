@@ -61,6 +61,7 @@
             matInput
             placeholder="Placeholder"
             formControlName="telefono"
+            maxlength="9"
           />
           <mat-icon matSuffix>phone_enabled</mat-icon>
           @if (getFieldInvalid('telefono')) {
@@ -112,9 +113,12 @@
         </mat-checkbox>
       </div>
       <div class="button-submit">
-        <button mat-raised-button color="primary">
+        <button mat-raised-button color="primary" class="spinner-save">
+          @if(loading){
+          <mat-icon><mat-spinner diameter="18"></mat-spinner></mat-icon>
+          } @else {
           <mat-icon>send</mat-icon>
-          Enviar
+          } Enviar
         </button>
       </div>
     </form>

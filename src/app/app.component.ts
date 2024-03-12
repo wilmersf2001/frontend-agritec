@@ -43,9 +43,9 @@ export class AppComponent {
   isLogged: boolean = false;
 
   constructor(
-    private router: Router,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -53,12 +53,11 @@ export class AppComponent {
       this.isLogged = status;
       this.authService.userLogged().subscribe((response) => {
         this.userLogged = response.data;
+        if (this.userLogged.role === 'admin') {
+          this.router.navigate(['contenido']);
+        }
       });
     });
-  }
-
-  redirectCreateAccount() {
-    this.router.navigate(['login-vendedor']);
   }
 
   logout() {

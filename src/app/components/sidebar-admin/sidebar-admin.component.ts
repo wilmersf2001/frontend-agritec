@@ -19,11 +19,14 @@ import { AuthService } from '../../services/auth.service';
     MatDividerModule,
     MatTooltipModule,
   ],
+  providers: [AuthService],
   templateUrl: './sidebar-admin.component.html',
   styleUrl: './sidebar-admin.component.scss',
 })
 export class SidebarAdminComponent {
   openedSubMenu: string | null = null;
+
+  constructor(private authService: AuthService) {}
 
   toggleSubMenu(item: string): void {
     if (this.openedSubMenu === item) {
@@ -33,13 +36,7 @@ export class SidebarAdminComponent {
     }
   }
 
-  getUserLogged() {
-    /* this.userService.getUserLogged().subscribe((res: any) => {
-      this.userLogged = res.data;
-    }); */
-  }
-
   logout() {
-    /* this.authService.logout(); */
+    this.authService.logout();
   }
 }

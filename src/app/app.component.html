@@ -52,12 +52,12 @@
           <div class="user">
             <p>{{ userLogged.nombres }} {{ userLogged.apellidos }}</p>
           </div>
-          } @if(statusLogged | async){
+          } @if((statusLogged | async) && (userLogged.role === 'admin')){}
+          @else{
           <button
             mat-icon-button
             [matMenuTriggerFor]="menu"
             aria-label="Example icon-button"
-            (click)="redirectCreateAccount()"
           >
             <mat-icon>account_circle</mat-icon>
           </button>
@@ -66,10 +66,10 @@
               <mat-icon>logout</mat-icon> salir
             </button>
           </mat-menu>
-          }
           <button mat-icon-button aria-label="Example icon-button">
             <mat-icon>shopping_cart</mat-icon>
           </button>
+          }
         </mat-toolbar>
 
         <div class="contenido">

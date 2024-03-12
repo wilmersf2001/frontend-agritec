@@ -5,12 +5,6 @@
     </div>
     <div class="agritec-name">
       <p>AGRITEC</p>
-      <div class="oneline">
-        <div class="status-indicator">
-          <div></div>
-        </div>
-        <span>Wilmer Yoel</span>
-      </div>
     </div>
   </header>
   <div class="barra-color">
@@ -22,7 +16,31 @@
       <li>
         <div class="item">
           <a
-            routerLink="inicio"
+            routerLink="contenido"
+            routerLinkActive="router-link-active"
+            (click)="openedSubMenu = null"
+          >
+            <mat-icon>content_paste_search</mat-icon>
+            <span>Contenido</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="item">
+          <a
+            routerLink="productos"
+            routerLinkActive="router-link-active"
+            (click)="openedSubMenu = null"
+          >
+            <mat-icon>inventory_2</mat-icon>
+            <span>Productos</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="item">
+          <a
+            routerLink="usuarios"
             routerLinkActive="router-link-active"
             (click)="openedSubMenu = null"
           >
@@ -31,45 +49,18 @@
           </a>
         </div>
       </li>
-      <!-- <li>
+      <li>
         <div class="item">
           <a
-            routerLink="postulante/modificar"
-            (click)="toggleSubMenu('postulante')"
-            [ngClass]="{ 'item-active': openedSubMenu === 'postulante' }"
+            routerLink="solicitudes"
+            routerLinkActive="router-link-active"
+            (click)="openedSubMenu = null"
           >
-            <mat-icon>person</mat-icon>
-            <span>Postulante</span>
+            <mat-icon>handshake</mat-icon>
+            <span>Solicitudes</span>
           </a>
-          <div
-            class="submenu"
-            [ngClass]="{ open: openedSubMenu === 'postulante' }"
-          >
-            <ul>
-              <li>
-                <div class="submenu-item">
-                  <a
-                    routerLink="postulante/modificar"
-                    routerLinkActive="router-link-active"
-                  >
-                    Modificar datos
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div class="submenu-item">
-                  <a
-                    routerLink="postulante/ficha-inscripcion"
-                    routerLinkActive="router-link-active"
-                  >
-                    ficha de inscripción
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
         </div>
-      </li> -->
+      </li>
     </ul>
     <footer>
       <div class="logout">

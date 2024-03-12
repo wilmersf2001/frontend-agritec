@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import {
   FormGroup,
@@ -12,6 +13,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login-comprador',
@@ -24,7 +27,9 @@ import {
     MatButtonModule,
     MatCheckboxModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
   ],
+  providers: [UserService],
   templateUrl: './login-comprador.component.html',
   styleUrl: './login-comprador.component.scss',
 })
@@ -33,7 +38,11 @@ export class LoginCompradorComponent {
   form!: FormGroup;
   loading = false;
 
-  constructor(private router: Router, private fb: FormBuilder) {
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private userService: UserService
+  ) {
     this.createForm();
   }
 
@@ -45,16 +54,27 @@ export class LoginCompradorComponent {
       telefono: ['', Validators.required],
       usuario: ['', Validators.required],
       password: ['', Validators.required],
+      role: ['cliente', Validators.required],
     });
   }
 
   onSubmit() {
+    this.loading = true;
     if (this.form.invalid) {
       return Object.values(this.form.controls).forEach((control) => {
         control.markAsTouched();
       });
     }
-    console.log(this.form.value);
+
+    this.userService
+      .crearCuenta(this.form.value)
+      .then(() => {
+        this.router.navigate(['inicio']);
+      })
+      .catch(() => {
+        this.form.reset();
+        this.loading = false;
+      });
   }
 
   getFieldInvalid(fieldName: string) {

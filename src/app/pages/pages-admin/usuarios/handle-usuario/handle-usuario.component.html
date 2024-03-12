@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="header-dialog">
+    <h2 mat-dialog-title>{{ $actionDetails.titleForm }}</h2>
+  </div>
+  <mat-divider></mat-divider>
+  <form [formGroup]="form" (ngSubmit)="submitForm($action)">
+    <div mat-dialog-content class="dialog-content">
+      @if ($action == 'CREATE' || $action == 'UPDATE') {
+      <div class="form-group">
+        <div class="form-row">
+          <div class="form-input">
+            <mat-form-field appearance="outline">
+              <mat-label>Nombres Completos</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                formControlName="nombres"
+              />
+            </mat-form-field>
+          </div>
+          <div class="form-input">
+            <mat-form-field appearance="outline">
+              <mat-label>Apellidos</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                formControlName="apellido"
+              />
+            </mat-form-field>
+          </div>
+          <div class="form-input">
+            <mat-form-field appearance="outline">
+              <mat-label>Usuario</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                formControlName="usuario"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-input">
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                formControlName="password"
+              />
+            </mat-form-field>
+          </div>
+          <div class="form-input">
+            <mat-form-field appearance="outline">
+              <mat-label for="inputSexo">Rol</mat-label>
+              <mat-select id="inputSexo">
+                <mat-option [value]="1"> Administrador </mat-option>
+                <mat-option [value]="1"> Editor </mat-option>
+                <mat-option [value]="1"> Visualizar </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      }@else if ($action == 'PERMISSIONS') {
+      <p>permisos</p>
+      }@else{
+      <div class="icon">
+        <mat-icon>warning</mat-icon>
+      </div>
+      <p>
+        ¿Está seguro que desea eliminar este usuario? Todos sus datos de
+        <strong>{{ $user.nombres }}</strong> serán eliminados permanentemente.
+        Esta acción no se puede deshacer.
+      </p>
+      }
+    </div>
+    <mat-divider></mat-divider>
+    <div mat-dialog-actions class="dialog-actions">
+      <button type="button" mat-button (click)="closeModal()">Cancelar</button>
+      <button mat-raised-button [color]="$actionDetails.colorButton">
+        @if(actionLoading){
+        <mat-icon>
+          <mat-spinner class="spinner-save" diameter="18"></mat-spinner>
+        </mat-icon>
+        }@else{
+        <mat-icon>{{ $actionDetails.iconButton }}</mat-icon>
+        }
+        {{ $actionDetails.namebutton }}
+      </button>
+    </div>
+  </form>
+</div>
+
