@@ -1,0 +1,59 @@
+.container {
+
+  .add {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 25px 0;
+  }
+
+  .spinner {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+
+    mat-spinner {
+      width: 45px !important;
+    }
+  }
+
+  .table {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    white-space: nowrap;
+
+    table {
+      box-shadow: none;
+
+      th {
+        background-color: #3D4EAF;
+        color: #fff;
+      }
+
+      .escritorio{
+        .small-button {
+          width: 40px;
+          height: 40px;
+          padding: .3rem;
+        }
+  
+        .small-icon {
+          font-size: 20px;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+  mat-paginator{
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 768px) {
+  table{
+    .escritorio{
+      display: none;
+    }
+  }
+}

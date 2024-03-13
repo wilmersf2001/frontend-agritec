@@ -14,19 +14,19 @@ export enum ACTIONS {
 
 export const ACTION_DETAILS = {
   [ACTIONS.CREATE]: {
-    titleForm: 'CREAR USUARIO',
+    titleForm: 'CREAR',
     namebutton: 'Crear',
     colorButton: 'primary',
     iconButton: 'add',
   },
   [ACTIONS.UPDATE]: {
-    titleForm: 'ACTUALIZAR USUARIO',
+    titleForm: 'ACTUALIZAR',
     namebutton: 'Actualizar',
     colorButton: 'primary',
     iconButton: 'edit',
   },
   [ACTIONS.DELETE]: {
-    titleForm: 'ELIMINAR USUARIO',
+    titleForm: 'ELIMINAR',
     namebutton: 'Eliminar',
     colorButton: 'warn',
     iconButton: 'delete',

@@ -12,7 +12,7 @@ export class ProductService {
     return this.http.get<any>(`${BASE_URL}/products`);
   }
 
-  getProduct(id: string) {
+  getProduct(id: number) {
     return this.http.get<any>(`${BASE_URL}/products/${id}`);
   }
 
@@ -20,11 +20,11 @@ export class ProductService {
     return this.http.post<any>(`${BASE_URL}/products`, product);
   }
 
-  updateProduct(id: string, product: any) {
+  updateProduct(id: number, product: any) {
     return this.http.put<any>(`${BASE_URL}/products/${id}`, product);
   }
 
-  deleteProduct(id: string) {
+  deleteProduct(id: number) {
     return this.http.delete<any>(`${BASE_URL}/products/${id}`);
   }
 }
