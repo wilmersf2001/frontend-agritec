@@ -28,6 +28,18 @@
       <li>
         <div class="item">
           <a
+            routerLink="categorias"
+            routerLinkActive="router-link-active"
+            (click)="openedSubMenu = null"
+          >
+            <mat-icon>category</mat-icon>
+            <span>Categorias</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="item">
+          <a
             routerLink="productos"
             routerLinkActive="router-link-active"
             (click)="openedSubMenu = null"

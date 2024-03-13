@@ -15,6 +15,7 @@ import { RobotSiembraPlantacionComponent } from './pages/robot-siembra-plantacio
 import { RobotVigilanciaSeguridadComponent } from './pages/robot-vigilancia-seguridad/robot-vigilancia-seguridad.component';
 //COMPONENTES ADMINISTRADOR
 import { ContenidoComponent } from './pages/pages-admin/contenido/contenido.component';
+import { CategoriasComponent } from './pages/pages-admin/categorias/categorias.component';
 import { ProductosComponent } from './pages/pages-admin/productos/productos.component';
 import { SolicitudesComponent } from './pages/pages-admin/solicitudes/solicitudes.component';
 import { UsuariosComponent } from './pages/pages-admin/usuarios/usuarios.component';
@@ -44,6 +45,7 @@ export const routes: Routes = [
     component: RobotVigilanciaSeguridadComponent,
   },
   { path: 'contenido', component: ContenidoComponent },
+  { path: 'categorias', component: CategoriasComponent },
   { path: 'productos', component: ProductosComponent },
   { path: 'solicitudes', component: SolicitudesComponent },
   { path: 'usuarios', component: UsuariosComponent },

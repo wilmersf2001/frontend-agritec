@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="header-dialog">
+    <h2 mat-dialog-title>{{ $actionDetails.titleForm }}</h2>
+  </div>
+  <mat-divider></mat-divider>
+  <form [formGroup]="form" (ngSubmit)="submitForm($action)">
+    <div mat-dialog-content class="dialog-content">
+      @if ($action == 'CREATE' || $action == 'UPDATE') {
+      <div class="form-group">
+        <div class="form-row">
+          <div class="form-input">
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                formControlName="nombre"
+              />
+            </mat-form-field>
+          </div>
+          <div class="form-input">
+            <mat-form-field appearance="outline">
+              <mat-label>Descripción</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                formControlName="descripcion"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      }@else{
+      <div class="icon">
+        <mat-icon>warning</mat-icon>
+      </div>
+      <p style="max-width: 500px">
+        ¿Está seguro que desea eliminar este usuario? Todos sus datos de
+        <strong>{{ $category.nombre }}</strong> serán eliminados
+        permanentemente. Esta acción no se puede deshacer.
+      </p>
+      }
+    </div>
+    <mat-divider></mat-divider>
+    <div mat-dialog-actions class="dialog-actions">
+      <button type="button" mat-button (click)="closeModal()">Cancelar</button>
+      <button mat-raised-button [color]="$actionDetails.colorButton">
+        @if(actionLoading){
+        <mat-icon>
+          <mat-spinner class="spinner-save" diameter="18"></mat-spinner>
+        </mat-icon>
+        }@else{
+        <mat-icon>{{ $actionDetails.iconButton }}</mat-icon>
+        }
+        {{ $actionDetails.namebutton }}
+      </button>
+    </div>
+  </form>
+</div>
