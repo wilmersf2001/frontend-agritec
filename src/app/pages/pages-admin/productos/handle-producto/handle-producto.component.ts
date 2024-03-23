@@ -2,7 +2,12 @@ import { Component, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -53,6 +58,9 @@ export class HandleProductoComponent {
   form!: FormGroup;
   actionLoading: boolean = false;
   loading = false;
+  previewFotoCarnet!: string;
+  fileNameCarnet: string = '...';
+  fileData: any;
 
   constructor(
     public dialogRef: MatDialogRef<HandleProductoComponent>,
@@ -69,13 +77,13 @@ export class HandleProductoComponent {
       case ACTIONS.CREATE:
         this.$actionDetails = ACTION_DETAILS[ACTIONS.CREATE];
         this.form = this.fb.group({
-          nombre: [''],
-          descripcion: [''],
-          precio: [''],
-          cantidad: [''],
-          ruta_imagen: [''],
-          user_id: [''],
-          category_id: [''],
+          nombre: ['', Validators.required],
+          descripcion: ['', Validators.required],
+          precio: ['', Validators.required],
+          cantidad: ['', Validators.required],
+          foto_producto: [null],
+          user_id: ['', Validators.required],
+          category_id: ['', Validators.required],
         });
         break;
       case ACTIONS.UPDATE:
@@ -85,9 +93,9 @@ export class HandleProductoComponent {
           descripcion: [this.$product.descripcion],
           precio: [this.$product.precio],
           cantidad: [this.$product.cantidad],
-          ruta_imagen: [this.$product.ruta_imagen],
-          user_id: [this.$product.user_id],
-          category_id: [this.$product.category_id],
+          foto_producto: [null],
+          user_id: [this.$product.usuario.id],
+          category_id: [this.$product.category.id],
         });
         break;
       case ACTIONS.DELETE:
@@ -118,20 +126,51 @@ export class HandleProductoComponent {
     this.actionLoading = true;
     switch (action) {
       case ACTIONS.CREATE:
-        this.productService.createProduct(this.form.value).subscribe((res) => {
+        const formData = new FormData();
+        formData.append('foto_producto', this.fileData);
+        formData.append('nombre', this.form.get('nombre')?.value);
+        formData.append('descripcion', this.form.get('descripcion')?.value);
+        formData.append('precio', this.form.get('precio')?.value);
+        formData.append('cantidad', this.form.get('cantidad')?.value);
+        formData.append('user_id', this.form.get('user_id')?.value);
+        formData.append('category_id', this.form.get('category_id')?.value);
+
+        this.productService.createProduct(formData).subscribe((res) => {
           this.actionLoading = false;
           this.closeModal();
           this.openSnackBar();
         });
         break;
       case ACTIONS.UPDATE:
-        this.productService
-          .updateProduct(this.$product.id, this.form.value)
-          .subscribe((res) => {
-            this.actionLoading = false;
-            this.closeModal();
-            this.openSnackBar();
-          });
+        if (
+          this.form.get('foto_producto')?.value == null ||
+          this.form.get('foto_producto')?.value == ''
+        ) {
+          this.productService
+            .updateProduct(this.$product.id, this.form.value)
+            .subscribe((res) => {
+              this.actionLoading = false;
+              this.closeModal();
+              this.openSnackBar();
+            });
+        } else {
+          const formData = new FormData();
+          formData.append('nombre', this.form.get('nombre')?.value);
+          formData.append('descripcion', this.form.get('descripcion')?.value);
+          formData.append('precio', this.form.get('precio')?.value);
+          formData.append('cantidad', this.form.get('cantidad')?.value);
+          formData.append('user_id', this.form.get('user_id')?.value);
+          formData.append('category_id', this.form.get('category_id')?.value);
+          formData.append('foto_producto', this.fileData);
+
+          this.productService
+            .updateProduct(this.$product.id, formData)
+            .subscribe((res) => {
+              this.actionLoading = false;
+              this.closeModal();
+              this.openSnackBar();
+            });
+        }
         break;
       case ACTIONS.DELETE:
         this.productService.deleteProduct(this.$product.id).subscribe((res) => {
@@ -143,6 +182,35 @@ export class HandleProductoComponent {
       default:
         break;
     }
+  }
+
+  onFileChange(event: any) {
+    const fileList = event.target.files;
+    const fileReader = new FileReader();
+
+    if (fileList.length > 0) {
+      const extension = fileList[0].name.split('.').pop()?.toLowerCase();
+
+      if (extension == 'jpg' || extension == 'jpeg' || extension == 'png') {
+        const fotoArchivo = fileList[0];
+
+        this.fileNameCarnet = fotoArchivo.name;
+        fileReader.onload = () => {
+          this.previewFotoCarnet = fileReader.result as string;
+        };
+        fileReader.readAsDataURL(fotoArchivo);
+        this.fileData = fotoArchivo;
+        this.form.get('foto_producto')?.setValue(fotoArchivo);
+      } else {
+        this.resetPreviewFoto();
+      }
+    }
+  }
+
+  resetPreviewFoto() {
+    this.form.get('foto_producto')?.setValue('');
+    this.previewFotoCarnet = '';
+    this.fileNameCarnet = 'selecciona un archivo..';
   }
 
   openSnackBar() {

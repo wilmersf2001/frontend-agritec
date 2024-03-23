@@ -3,14 +3,18 @@
     <h2 mat-dialog-title>{{ $actionDetails.titleForm }}</h2>
   </div>
   <mat-divider></mat-divider>
-  <form [formGroup]="form" (ngSubmit)="submitForm($action)">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="submitForm($action)"
+    enctype="multipart/form-data"
+  >
     <div mat-dialog-content class="dialog-content">
       @if ($action == 'CREATE' || $action == 'UPDATE') {
       <div class="form-group">
         <div class="form-row">
           <div class="form-input">
             <mat-form-field appearance="outline">
-              <mat-label>Nombre</mat-label>
+              <mat-label>Nombre del Producto</mat-label>
               <input
                 matInput
                 placeholder="Placeholder"
@@ -53,7 +57,7 @@
           <div class="form-input">
             <mat-form-field appearance="outline">
               <mat-label>Categoria</mat-label>
-              <mat-select>
+              <mat-select formControlName="category_id">
                 @for (categoria of category; track categoria.id) {
                 <mat-option [value]="categoria.id">
                   {{ categoria.nombre }}
@@ -65,7 +69,7 @@
           <div class="form-input">
             <mat-form-field appearance="outline">
               <mat-label>Vendedor</mat-label>
-              <mat-select>
+              <mat-select formControlName="user_id">
                 @for (usuario of user; track usuario.id) {
                 <mat-option [value]="usuario.id">
                   {{ usuario.nombres }}
@@ -73,6 +77,40 @@
                 }
               </mat-select>
             </mat-form-field>
+          </div>
+          <div class="form-row">
+            <div class="row-file">
+              <div class="file-photo">
+                <div class="encabezado-img">
+                  <mat-icon>camera_alt</mat-icon>
+                  <h4>FOTO CARNET</h4>
+                </div>
+                <div class="foto-carnet">
+                  <img
+                    [src]="previewFotoCarnet"
+                    alt="FOTO CARNET"
+                    onerror="this.src='assets/images/subir.png';"
+                  />
+                </div>
+                <div class="file-upload-container">
+                  <label for="fileInputCarnet" class="file-upload-label">
+                    Seleccionar Archivo
+                  </label>
+                  <input
+                    type="file"
+                    id="fileInputCarnet"
+                    class="file-upload"
+                    accept="image/*"
+                    formControlName="foto_producto"
+                    (change)="onFileChange($event)"
+                    (click)="resetPreviewFoto()"
+                  />
+                  <div id="fileName" class="file-name">
+                    {{ fileNameCarnet }}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

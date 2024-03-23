@@ -1,1 +1,53 @@
-<p>contenido works!</p>
+<div class="container">
+  <div class="title">
+    <h1>Seleccionar categoria</h1>
+  </div>
+  <div class="buttons-files">
+    <mat-button-toggle-group
+      name="archivos"
+      [value]="defaultSelected"
+      (change)="getProductosByCategoria($event)"
+    >
+      @for (categoria of categorias; track categoria.id){
+      <mat-button-toggle value="{{ categoria.id }}">
+        <mat-icon>category</mat-icon>
+        {{ categoria.nombre }}
+      </mat-button-toggle>
+      }
+    </mat-button-toggle-group>
+  </div>
+
+  <section class="productos">
+    <div class="subtitle">
+      <h2>Productos por Categoria</h2>
+    </div>
+    <div class="row">
+      @for (producto of productos; track producto.id) {
+      <mat-card class="example-card">
+        <img
+          class="img-card"
+          mat-card-image
+          [src]="producto.ruta_imagen"
+          alt="Photo of a Shiba Inu"
+        />
+        <mat-card-content>
+          <mat-card-title>{{ producto.nombre }}</mat-card-title>
+          <mat-card-subtitle>
+            {{ producto.descripcion }}
+          </mat-card-subtitle>
+          <div class="precio">
+            <div class="unidad">S/.</div>
+            <div class="monto">{{ producto.precio }}</div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button><mat-icon>add</mat-icon> Detalles</button>
+          <button mat-raised-button color="primary">
+            <mat-icon>shopping_cart</mat-icon> Añadir al carrito
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      }
+    </div>
+  </section>
+</div>

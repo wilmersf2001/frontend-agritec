@@ -42,6 +42,99 @@
             width: 100%;
           }
         }
+
+        .row-file{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4rem;
+          margin-bottom: 1rem;
+
+          .border-invalid{
+            border: 1px solid #E53E3E !important;
+          }
+
+          .file-photo{
+            width: 230px;
+            border: 1px solid #ccc;
+            border-radius: 22px;
+            padding: 1rem;
+
+            .encabezado-img{
+              display: flex;
+              align-items: center;
+              h4{
+                margin: 0;
+                margin-left: .5rem;
+              }
+            }
+            .foto-carnet{
+              margin: 15px auto;
+              width: 180px;
+              height: 220px;
+              background-color: #ccc;
+              border-radius: 22px;
+
+              img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 22px;
+              }
+            }
+
+            .foto-dni{
+              margin: 15px auto;
+              width: 180px;
+              height: 150px;
+              background-color: #ccc;
+              border-radius: 22px;
+
+              img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 22px;
+              }
+            }
+
+            .file-upload-container {
+              text-align: center;
+
+              .file-upload-label {
+                display: inline-block;
+                padding: 8px 20px;
+                cursor: pointer;
+                background-color: #38419D;
+                color: #fff;
+                border-radius: 10px;
+                transition: background-color 0.3s ease;
+              }
+
+              &:hover .file-upload-label{
+                background-color: #5c63ad;
+              }
+
+              .file-upload {
+                opacity: 0;
+                position: absolute;
+                width: 0.1px;
+                height: 0.1px;
+                overflow: hidden;
+                z-index: -1;
+              }
+
+              .text-invalid{
+                color: #E53E3E !important;
+              }
+
+              .file-name {
+                margin-top: 10px;
+                font-size: 14px;
+              }
+            }
+          }
+        }
       }
     }
   }

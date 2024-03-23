@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BASE_URL } from './service.config';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,10 @@ export class ProductService {
   }
 
   updateProduct(id: number, product: any) {
-    return this.http.put<any>(`${BASE_URL}/products/${id}`, product);
+    return this.http.post<any>(
+      `${BASE_URL}/products/${id}?_method=PUT`,
+      product
+    );
   }
 
   deleteProduct(id: number) {

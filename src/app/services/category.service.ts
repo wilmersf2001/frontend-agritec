@@ -30,4 +30,8 @@ export class CategoryService {
   deleteCategory(id: number) {
     return this.http.delete<any>(`${BASE_URL}/categories/${id}`);
   }
+
+  getProductsByCategory(id: number) {
+    return this.http.get<any>(`${BASE_URL}/categories/${id}/products`);
+  }
 }
