@@ -6,6 +6,9 @@ import { RouterLinkActive, RouterLink } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
+
+import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-sidebar-admin',
@@ -24,16 +27,24 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './sidebar-admin.component.scss',
 })
 export class SidebarAdminComponent {
-  openedSubMenu: string | null = null;
+  statusLogged = this.userService.getStatusUserLogged();
+  userLogged: User = {} as User;
+  isLogged: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
 
-  toggleSubMenu(item: string): void {
-    if (this.openedSubMenu === item) {
-      this.openedSubMenu = null;
-    } else {
-      this.openedSubMenu = item;
-    }
+  ngOnInit() {
+    this.userService.getStatusUserLogged().subscribe((status) => {
+      this.isLogged = status;
+      if (this.isLogged) {
+        this.authService.userLogged().subscribe((response) => {
+          this.userLogged = response.data;
+        });
+      }
+    });
   }
 
   logout() {

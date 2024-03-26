@@ -13,7 +13,22 @@
   </div>
   <div class="sidenav-content">
     <ul>
+      @for (categoria of categorias; track categoria.id) {
       <li>
+        <div class="item">
+          <a
+            routerLink="robot-vigilancia-seguridad"
+            routerLinkActive="router-link-active"
+          >
+            <div>
+              <mat-icon>{{ categoria.icono }}</mat-icon>
+            </div>
+            <span>{{ categoria.nombre }} {{ categoria.icono }}</span>
+          </a>
+        </div>
+      </li>
+      }
+      <!-- <li>
         <div class="item">
           <a
             routerLink="robot-siembra-plantacion"
@@ -25,7 +40,7 @@
             <span>Robots de Siembra y Plantación</span>
           </a>
         </div>
-      </li>
+      </li> 
 
       <li>
         <div class="item">
@@ -106,6 +121,26 @@
           </a>
         </div>
       </li>
+      -->
     </ul>
+    @if(isLogged){
+    <footer>
+      <div class="logout">
+        <div class="user-name">
+          <mat-icon>account_circle</mat-icon>
+          <div>{{ userLogged.apellidos }} {{ userLogged.nombres }}</div>
+        </div>
+        <button
+          mat-icon-button
+          matTooltip="salir"
+          matTooltipPosition="right"
+          class="small-button"
+          (click)="logout()"
+        >
+          <mat-icon class="small-icon">logout</mat-icon>
+        </button>
+      </div>
+    </footer>
+    }
   </div>
 </div>

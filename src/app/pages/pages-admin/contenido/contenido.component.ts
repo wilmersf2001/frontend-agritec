@@ -35,7 +35,6 @@ export class ContenidoComponent {
   ngOnInit() {
     this.categoryService.getCategories().subscribe((data: any) => {
       this.categorias = data.data;
-      console.log('categorias', this.categorias);
     });
   }
 
@@ -46,7 +45,6 @@ export class ContenidoComponent {
       .getProductsByCategory(event.value)
       .subscribe((data: any) => {
         this.productos = data;
-        console.log('productos', this.productos);
       });
   }
 }

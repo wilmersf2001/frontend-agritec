@@ -37,7 +37,6 @@ import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'frontend-agritec';
   statusLogged = this.userService.getStatusUserLogged();
   userLogged: User = {} as User;
   isLogged: boolean = false;
@@ -51,12 +50,14 @@ export class AppComponent {
   ngOnInit() {
     this.userService.getStatusUserLogged().subscribe((status) => {
       this.isLogged = status;
-      this.authService.userLogged().subscribe((response) => {
-        this.userLogged = response.data;
-        if (this.userLogged.role === 'admin') {
-          this.router.navigate(['contenido']);
-        }
-      });
+      if (this.isLogged) {
+        this.authService.userLogged().subscribe((response) => {
+          this.userLogged = response.data;
+          if (this.userLogged.role === 'admin') {
+            this.router.navigate(['contenido']);
+          }
+        });
+      }
     });
   }
 
