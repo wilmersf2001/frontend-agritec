@@ -2,11 +2,9 @@
   <div class="content">
     <mat-drawer-container class="example-container" autosize>
       <mat-drawer #drawer class="example-sidenav" mode="side">
-        @if(statusLogged | async) { @if(userLogged.role === 'admin') {
+        @if((statusLogged | async) && (userLogged.role === 'admin') ){
         <app-sidebar-admin></app-sidebar-admin>
         }@else {
-        <app-sidebar></app-sidebar>
-        } }@else {
         <app-sidebar></app-sidebar>
         }
       </mat-drawer>

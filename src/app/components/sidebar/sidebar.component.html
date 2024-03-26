@@ -16,112 +16,15 @@
       @for (categoria of categorias; track categoria.id) {
       <li>
         <div class="item">
-          <a
-            routerLink="robot-vigilancia-seguridad"
-            routerLinkActive="router-link-active"
-          >
+          <a (click)="selectCategoria(categoria.id)">
             <div>
               <mat-icon>{{ categoria.icono }}</mat-icon>
             </div>
-            <span>{{ categoria.nombre }} {{ categoria.icono }}</span>
+            <span>{{ categoria.nombre }}</span>
           </a>
         </div>
       </li>
       }
-      <!-- <li>
-        <div class="item">
-          <a
-            routerLink="robot-siembra-plantacion"
-            routerLinkActive="router-link-active"
-          >
-            <div>
-              <mat-icon>smart_toy</mat-icon>
-            </div>
-            <span>Robots de Siembra y Plantación</span>
-          </a>
-        </div>
-      </li> 
-
-      <li>
-        <div class="item">
-          <a routerLink="robot-cosecha" routerLinkActive="router-link-active">
-            <mat-icon>precision_manufacturing</mat-icon>
-            <span>Robots de Cosecha</span>
-          </a>
-        </div>
-      </li>
-      <li>
-        <div class="item">
-          <a
-            routerLink="robot-desmalezado"
-            routerLinkActive="router-link-active"
-          >
-            <mat-icon>smart_toy</mat-icon>
-            <span>Robots de Desmalezado</span>
-          </a>
-        </div>
-      </li>
-      <li>
-        <div class="item">
-          <a
-            routerLink="robot-monitoreo-diagnostico"
-            routerLinkActive="router-link-active"
-          >
-            <div>
-              <mat-icon>support_agent</mat-icon>
-            </div>
-            <span>Robots de Monitoreo y Diagnóstico</span>
-          </a>
-        </div>
-      </li>
-      <li>
-        <div class="item">
-          <a routerLink="robot-riego" routerLinkActive="router-link-active">
-            <mat-icon>water_drop</mat-icon>
-            <span>Robots de Riego</span>
-          </a>
-        </div>
-      </li>
-      <li>
-        <div class="item">
-          <a
-            routerLink="robot-proteccion-cultivo"
-            routerLinkActive="router-link-active"
-          >
-            <div>
-              <mat-icon>health_and_safety</mat-icon>
-            </div>
-            <span>Robots de Protección de Cultivos</span>
-          </a>
-        </div>
-      </li>
-      <li>
-        <div class="item">
-          <a
-            routerLink="robot-manejo-suelo"
-            routerLinkActive="router-link-active"
-          >
-            <div>
-              <mat-icon>analytics</mat-icon>
-            </div>
-            <span>Robots de Manejo del Suelo</span>
-          </a>
-        </div>
-      </li>
-      <li>
-        <div class="item">
-          <a
-            routerLink="robot-vigilancia-seguridad"
-            routerLinkActive="router-link-active"
-          >
-            <div>
-              <mat-icon>egg_alt</mat-icon>
-            </div>
-            <span>Robots de Vigilancia y Seguridad</span>
-          </a>
-        </div>
-      </li>
-      -->
     </ul>
     @if(isLogged){
     <footer>

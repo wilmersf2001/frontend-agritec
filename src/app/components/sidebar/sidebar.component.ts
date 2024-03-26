@@ -6,6 +6,7 @@ import { RouterLinkActive, RouterLink } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CategoryService } from '../../services/category.service';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
@@ -38,7 +39,8 @@ export class SidebarComponent {
   constructor(
     private authService: AuthService,
     private categoryService: CategoryService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -47,15 +49,17 @@ export class SidebarComponent {
       if (this.isLogged) {
         this.authService.userLogged().subscribe((response) => {
           this.userLogged = response.data;
-          console.log(this.userLogged);
         });
       }
     });
 
     this.categoryService.getCategories().subscribe((response) => {
       this.categorias = response.data;
-      console.log(this.categorias);
     });
+  }
+
+  selectCategoria(id: number) {
+    this.router.navigate(['categoria-productos', id]);
   }
 
   logout() {
