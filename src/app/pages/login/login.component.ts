@@ -61,6 +61,10 @@ export class LoginComponent {
       });
   }
 
+  redirectToRegister() {
+    this.router.navigate(['login-comprador']);
+  }
+
   openSnackBar() {
     this._snackBar.openFromComponent(SnackBarComponent, {
       duration: 3000,

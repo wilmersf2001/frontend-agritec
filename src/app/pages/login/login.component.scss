@@ -55,6 +55,20 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 1rem;
+
+        .crear-cuenta{
+          padding: .5rem 0;
+          
+          button{
+            background: none;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: underline;
+            margin-top: .5rem;
+          }
+        }
       }
     }
 

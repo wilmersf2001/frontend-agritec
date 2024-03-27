@@ -1,0 +1,71 @@
+.container{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .card{
+      min-width: 70rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 22px;
+      display: flex;
+
+      .imagen-producto{
+        border-radius: 22px;
+        margin-right: 1rem;
+
+        img{
+          border-radius: 22px;
+          width: 500px;
+          height: 450px;
+        }
+      }
+
+      .informacion-pago{
+        width: 100%;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        .descripcion{
+          h1{
+            font-weight: 600;
+          }
+          .monto{
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+          }
+          ul{
+            list-style: none;
+            padding: 0;
+            li{
+              padding: 0.5rem 0;
+              span{
+                font-weight: 500;
+              }
+            }
+          }
+        }
+
+        form{
+
+          .botones{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+
+            .button-cantidad{
+              display: flex;
+              .cantidad{
+                padding: 0.5rem 1rem;
+                border: 1px solid #ccc;
+              }
+            }
+          }
+        }
+
+      }
+    }
+}

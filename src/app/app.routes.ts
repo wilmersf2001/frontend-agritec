@@ -7,6 +7,7 @@ import { ConsultoriaComponent } from './pages/consultoria/consultoria.component'
 import { ContactanosComponent } from './pages/contactanos/contactanos.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { FinalizarCompraComponent } from './pages/finalizar-compra/finalizar-compra.component';
 //COMPONENTES ADMINISTRADOR
 import { ContenidoComponent } from './pages/pages-admin/contenido/contenido.component';
 import { CategoriasComponent } from './pages/pages-admin/categorias/categorias.component';
@@ -28,6 +29,7 @@ export const routes: Routes = [
   { path: 'empresa', component: EmpresaComponent },
   { path: 'contactanos', component: ContactanosComponent },
   { path: 'consultoria', component: ConsultoriaComponent },
+  { path: 'finalizar-compra', component: FinalizarCompraComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: '**', redirectTo: '/inicio' },
 ];

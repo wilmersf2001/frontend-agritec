@@ -45,15 +45,98 @@
             <a routerLink="login-comprador" routerLinkActive="activate">
               Crear cuenta
             </a>
+            <button mat-icon-button class="demo-section">
+              <mat-icon>shopping_cart</mat-icon>
+            </button>
           </div>
           }@else {
           <div class="user">
             <p>{{ userLogged.nombres }} {{ userLogged.apellidos }}</p>
           </div>
           @if(userLogged.role === 'cliente'){
-          <button mat-icon-button aria-label="Example icon-button">
-            <mat-icon>shopping_cart</mat-icon>
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="beforeMenu"
+            class="demo-section"
+          >
+            <mat-icon
+              [matBadge]="cantidadProducts"
+              matBadgeColor="primary"
+              aria-hidden="false"
+              >shopping_cart</mat-icon
+            >
           </button>
+          <mat-menu #beforeMenu="matMenu" xPosition="before">
+            @if (cantidadProducts == 0) {
+            <div style="display: flex; flex-direction: column">
+              <p style="padding: 0.5rem 1rem; margin: 0">Carrito Vacío</p>
+            </div>
+            }@else {
+            <div style="display: flex; flex-direction: column; height: 400px">
+              <div style="display: flex; justify-content: space-between">
+                <p style="padding: 0.5rem 1rem; margin: 0">
+                  {{ cantidadProducts }} elementos
+                </p>
+                <a style="padding: 0.5rem 1rem" routerLink="finalizar-compra"
+                  >ver carrito</a
+                >
+              </div>
+              <mat-divider></mat-divider>
+              @for (producto of productosAgregados; track $index) {
+              <div style="display: flex; padding: 0.8rem 1rem">
+                <div style="flex: 1">
+                  <p style="margin-bottom: 0.3rem">
+                    <strong>{{ producto.name }}</strong>
+                  </p>
+                  <p style="font-size: 0.8rem">
+                    {{ producto.qty }} x S/. {{ producto.price }}
+                  </p>
+                </div>
+                <div
+                  style="
+                    flex: 1;
+                    display: flex;
+                    justify-content: center;
+                    position: relative;
+                  "
+                >
+                  <img
+                    [src]="producto.options[0]"
+                    alt="PRODUCTO"
+                    width="70"
+                    height="70"
+                  />
+                  <button
+                    style="
+                      position: absolute;
+                      right: 0;
+                      top: 0;
+                      height: 25px;
+                      width: 25px;
+                    "
+                    mat-mini-fab
+                    mat-mini-fab
+                    color="warn"
+                    (click)="removeProductCart(producto.rowId)"
+                  >
+                    <mat-icon style="width: 25px; height: 25px">close</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <mat-divider></mat-divider>
+              }
+              <div style="padding: 1rem 2rem">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="finalizarCompra()"
+                >
+                  <mat-icon>local_mall</mat-icon> Finalizar Compra
+                </button>
+              </div>
+            </div>
+            }
+          </mat-menu>
           } }
         </mat-toolbar>
         <div class="contenido">

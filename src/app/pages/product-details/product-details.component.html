@@ -1,26 +1,53 @@
 <div class="container">
   <div class="card">
-    <div class="informacion">
-      <img src="https://via.placeholder.com/150" alt="Imagen del producto" />
-      <div class="descripcion">
-        <h1>{{ product.nombre }}</h1>
-        <p>Descripción del producto</p>
-        <div class="precio">
-          <div class="unidad">S/.</div>
-          <div class="monto">Precio del producto</div>
-        </div>
-      </div>
+    <div class="imagen-producto">
+      <img [src]="product.ruta_imagen" [alt]="product.nombre" />
     </div>
     <div class="informacion-pago">
-      <!-- <h1>{{ producto.nombre }}</h1>
-      <p>{{ producto.descripcion }}</p>
-      <div class="precio">
-        <div class="unidad">S/.</div>
-        <div class="monto">{{ producto.precio }}</div>
+      <div class="descripcion">
+        <h1>{{ product.nombre }}</h1>
+        <div class="monto">S/.{{ product.precio }}</div>
+        <ul>
+          <li>
+            Cantidad: <span>{{ product.cantidad }}</span>
+          </li>
+          <li>
+            Descripción: <span>{{ product.descripcion }}</span>
+          </li>
+          <li>
+            <!-- Categoria: <span>{{ product.category.nombre }}</span> -->
+          </li>
+        </ul>
       </div>
-      <button mat-raised-button color="primary">
-        <mat-icon>shopping_cart</mat-icon> Añadir al carrito
-      </button> -->
+      <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <input type="hidden" formControlName="qty" />
+        <div class="botones">
+          <div class="button-cantidad">
+            <button
+              mat-raised-button
+              color="primary"
+              type="button"
+              (click)="sumaCantidad()"
+            >
+              +
+            </button>
+            <div class="cantidad">
+              <b>{{ cantidad }}</b>
+            </div>
+            <button
+              mat-raised-button
+              color="primary"
+              type="button"
+              (click)="restarCantidad()"
+            >
+              -
+            </button>
+          </div>
+          <button mat-raised-button color="primary">
+            <mat-icon>shopping_cart</mat-icon> Añadir al carrito
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

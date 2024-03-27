@@ -18,25 +18,26 @@
       <h2>Productos Destacados</h2>
     </div>
     <div class="row">
+      @for (product of products; track product.id) {
       <mat-card class="example-card">
         <img
           class="img-card"
           mat-card-image
-          src="assets/images/robot1.png"
+          [src]="product.ruta_imagen"
           alt="Photo of a Shiba Inu"
         />
         <mat-card-content>
-          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-title>{{ product.nombre }}</mat-card-title>
           <mat-card-subtitle>
-            The Shiba Inu is the smallest of the six original and distinct.
+            {{ product.descripcion }}
           </mat-card-subtitle>
           <div class="precio">
             <div class="unidad">S/.</div>
-            <div class="monto">1000.99</div>
+            <div class="monto">{{ product.precio }}</div>
           </div>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button (click)="rediredDetails()">
+          <button mat-raised-button (click)="detailsProduct(product.id)">
             <mat-icon>add</mat-icon> Detalles
           </button>
           <button mat-raised-button color="primary">
@@ -44,84 +45,7 @@
           </button>
         </mat-card-actions>
       </mat-card>
-      <mat-card class="example-card">
-        <img
-          class="img-card"
-          mat-card-image
-          src="assets/images/robot1.png"
-          alt="Photo of a Shiba Inu"
-        />
-        <mat-card-content>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>
-            The Shiba Inu is the smallest of the six original and distinct.
-          </mat-card-subtitle>
-          <div class="precio">
-            <div class="unidad">S/.</div>
-            <div class="monto">1000.99</div>
-          </div>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button (click)="rediredDetails()">
-            <mat-icon>add</mat-icon> Detalles
-          </button>
-          <button mat-raised-button color="primary">
-            <mat-icon>shopping_cart</mat-icon> Añadir al carrito
-          </button>
-        </mat-card-actions>
-      </mat-card>
-      <mat-card class="example-card">
-        <img
-          class="img-card"
-          mat-card-image
-          src="assets/images/robot1.png"
-          alt="Photo of a Shiba Inu"
-        />
-        <mat-card-content>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>
-            The Shiba Inu is the smallest of the six original and distinct.
-          </mat-card-subtitle>
-          <div class="precio">
-            <div class="unidad">S/.</div>
-            <div class="monto">1000.99</div>
-          </div>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button (click)="rediredDetails()">
-            <mat-icon>add</mat-icon> Detalles
-          </button>
-          <button mat-raised-button color="primary">
-            <mat-icon>shopping_cart</mat-icon> Añadir al carrito
-          </button>
-        </mat-card-actions>
-      </mat-card>
-      <mat-card class="example-card">
-        <img
-          class="img-card"
-          mat-card-image
-          src="assets/images/robot1.png"
-          alt="Photo of a Shiba Inu"
-        />
-        <mat-card-content>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>
-            The Shiba Inu is the smallest of the six original and distinct.
-          </mat-card-subtitle>
-          <div class="precio">
-            <div class="unidad">S/.</div>
-            <div class="monto">1000.99</div>
-          </div>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button (click)="rediredDetails()">
-            <mat-icon>add</mat-icon> Detalles
-          </button>
-          <button mat-raised-button color="primary">
-            <mat-icon>shopping_cart</mat-icon> Añadir al carrito
-          </button>
-        </mat-card-actions>
-      </mat-card>
+      }
     </div>
   </section>
 </div>

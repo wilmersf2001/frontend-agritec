@@ -30,4 +30,8 @@ export class ProductService {
   deleteProduct(id: number) {
     return this.http.delete<any>(`${BASE_URL}/products/${id}`);
   }
+
+  getProductRandom() {
+    return this.http.get<any>(`${BASE_URL}/products-random`);
+  }
 }

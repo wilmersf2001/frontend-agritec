@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { BASE_URL } from './service.config';
 import { UserService } from './user.service';
+import { CartService } from './cart.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private cartService: CartService
   ) {}
 
   async login(formValue: any) {
@@ -21,6 +23,7 @@ export class AuthService {
     );
     this.saveToken(response.token);
     this.userService.setStatusUserLogged(true);
+    this.cartService.setStatusCart(true);
 
     return response;
   }
