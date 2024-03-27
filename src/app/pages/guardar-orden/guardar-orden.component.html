@@ -1,0 +1,226 @@
+<div class="container">
+  <div class="create-account">
+    <header>
+      <h1>COMPLETAR ORDER</h1>
+    </header>
+    <mat-divider></mat-divider>
+    <div class="anuncio">
+      <div class="imagen">
+        <img src="assets/images/carrito.png" alt="LOGO_VENDEDOR" />
+      </div>
+      <div class="message">
+        <h2>¡Completa tu orden y disfruta de tu compra!</h2>
+        <p>
+          Encuentra los mejores productos y servicios para tu empresa y optimiza
+          tus procesos de agricultura.
+        </p>
+      </div>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h4>Completa tus Datos</h4>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombres</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="nombres" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          @if (getFieldInvalid('nombres')) {
+          <mat-error>
+            Nombres es un campo <strong>requerido</strong>
+          </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Apellidos Paterno</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            formControlName="apellido_paterno"
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          @if (getFieldInvalid('apellido_paterno')) {
+          <mat-error>
+            Apellidos es un campo <strong>requerido</strong>
+          </mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Apellidos Materno</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            formControlName="apellido_materno"
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          @if (getFieldInvalid('apellido_materno')) {
+          <mat-error>
+            Apellidos es un campo <strong>requerido</strong>
+          </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>DNI</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            formControlName="dni"
+            maxlength="8"
+          />
+          <mat-icon matSuffix>contact_page</mat-icon>
+          @if (getFieldInvalid('dni')) {
+          <mat-error> DNI es un campo <strong>requerido</strong> </mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Teléfono</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            formControlName="telefono"
+            maxlength="9"
+          />
+          <mat-icon matSuffix>phone_enabled</mat-icon>
+          @if (getFieldInvalid('telefono')) {
+          <mat-error>
+            Teléfono es un campo <strong>requerido</strong>
+          </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Dirección</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            formControlName="direccion"
+          />
+          <mat-icon matSuffix>pin_drop</mat-icon>
+          @if (getFieldInvalid('direccion')) {
+          <mat-error>
+            Dirección es un campo <strong>requerido</strong>
+          </mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <h4>Ubicación</h4>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label> Departamento </mat-label>
+          <mat-select
+            (selectionChange)="onDepartmentChange($event.value)"
+            formControlName="departamento_id"
+          >
+            @for (departamento of departamentos; track departamento.id) {
+            <mat-option [value]="departamento.id">
+              {{ departamento.nombre }}
+            </mat-option>
+            }
+          </mat-select>
+          @if (getFieldInvalid('departamento_id')) {
+          <mat-error>
+            {{ getErrorMessage("departamento_id", "Departamento") }}
+          </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Provincia</mat-label>
+          <mat-select
+            (selectionChange)="onProvinceChange($event.value)"
+            formControlName="provincia_id"
+          >
+            @if(enableLocation('departamento_id')) { @for(provincia of
+            provincias; track provincia.id) {
+            <mat-option [value]="provincia.id">
+              {{ provincia.nombre }}
+            </mat-option>
+            } }@else {
+            <mat-option> Seleccionar Departamento </mat-option>
+            }
+          </mat-select>
+          @if (getFieldInvalid('provincia_id')) {
+          <mat-error>
+            {{ getErrorMessage("provincia_id", "Provincia") }}
+          </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Distrito</mat-label>
+          <mat-select formControlName="distrito_id">
+            @if(enableLocation('provincia_id')) { @for(distritos of distritos;
+            track distritos.id) {
+            <mat-option [value]="distritos.id">
+              {{ distritos.nombre }}
+            </mat-option>
+            } } @else {
+            <mat-option> Seleccionar Provincia </mat-option>
+            }
+          </mat-select>
+          @if (getFieldInvalid('provincia_id')) {
+          <mat-error>
+            {{ getErrorMessage("provincia_id", "Distrito") }}
+          </mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <h4>Nota</h4>
+      <div class="row">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nota</mat-label>
+          <textarea
+            matInput
+            placeholder="Producto delicado"
+            formControlName="nota"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label> Tipo Comprobante </mat-label>
+          <mat-select formControlName="tipo_comprobante">
+            <mat-option value="boleta"> Boleta </mat-option>
+            <mat-option value="factura"> Factura </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <h4>Métodos de pago</h4>
+      <div class="row">
+        <mat-radio-group color="primary" formControlName="metodo_pago">
+          <mat-radio-button value="pago_tarjeta_credito"
+            >Pago tarjeta crédito / débito</mat-radio-button
+          ><br />
+          <mat-radio-button value="transferencia_bancaria"
+            >Tranferencia bancaria - BBVA</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+      <div class="row">
+        <p>
+          Sus datos personales se utilizarán para procesar su pedido, respaldar
+          su experiencia en este sitio web y para otros fines descritos en
+          niestras politicas de privaciodad
+        </p>
+      </div>
+      <div class="row">
+        <mat-checkbox color="primary">
+          He leído y estoy de acuerdo con los términos y condiciones del sitio
+        </mat-checkbox>
+      </div>
+      <div class="button-submit">
+        <button mat-raised-button color="primary" class="spinner-save">
+          @if(loading){
+          <mat-icon><mat-spinner diameter="18"></mat-spinner></mat-icon>
+          } @else {
+          <mat-icon>send</mat-icon>
+          } Enviar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -34,4 +34,10 @@ export class ProductService {
   getProductRandom() {
     return this.http.get<any>(`${BASE_URL}/products-random`);
   }
+
+  getSearchProducto(searchQuery: string) {
+    return this.http.get(
+      `${BASE_URL}/products-search?search_query=${searchQuery}`
+    );
+  }
 }

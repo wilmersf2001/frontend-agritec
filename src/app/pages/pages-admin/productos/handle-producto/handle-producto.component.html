@@ -78,36 +78,36 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="form-row">
-            <div class="row-file">
-              <div class="file-photo">
-                <div class="encabezado-img">
-                  <mat-icon>camera_alt</mat-icon>
-                  <h4>FOTO CARNET</h4>
-                </div>
-                <div class="foto-carnet">
-                  <img
-                    [src]="previewFotoCarnet"
-                    alt="FOTO CARNET"
-                    onerror="this.src='assets/images/subir.png';"
-                  />
-                </div>
-                <div class="file-upload-container">
-                  <label for="fileInputCarnet" class="file-upload-label">
-                    Seleccionar Archivo
-                  </label>
-                  <input
-                    type="file"
-                    id="fileInputCarnet"
-                    class="file-upload"
-                    accept="image/*"
-                    formControlName="foto_producto"
-                    (change)="onFileChange($event)"
-                    (click)="resetPreviewFoto()"
-                  />
-                  <div id="fileName" class="file-name">
-                    {{ fileNameCarnet }}
-                  </div>
+        </div>
+        <div class="form-row">
+          <div class="row-file">
+            <div class="file-photo">
+              <div class="encabezado-img">
+                <mat-icon>camera_alt</mat-icon>
+                <h4>IMAGEN DE PRODUCTO</h4>
+              </div>
+              <div class="foto-carnet">
+                <img
+                  [src]="previewFotoProducto"
+                  alt="FOTO CARNET"
+                  onerror="this.src='assets/images/subir.png';"
+                />
+              </div>
+              <div class="file-upload-container">
+                <label for="fileInputCarnet" class="file-upload-label">
+                  Seleccionar Archivo
+                </label>
+                <input
+                  type="file"
+                  id="fileInputCarnet"
+                  class="file-upload"
+                  accept="image/*"
+                  formControlName="foto_producto"
+                  (change)="onFileChange($event)"
+                  (click)="resetPreviewFoto()"
+                />
+                <div id="fileName" class="file-name">
+                  {{ fileNameProducto }}
                 </div>
               </div>
             </div>

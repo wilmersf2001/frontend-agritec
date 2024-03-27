@@ -5,7 +5,15 @@
   <div class="spinner">
     <mat-spinner diameter="50"></mat-spinner>
   </div>
-  } @else {
+  } @else { @if (cantidadProducts == 0) {
+  <div class="carrito-vacio">
+    <mat-icon class="bolsa">shopping_bag</mat-icon>
+    <p>No se han añadido productos al carrito.</p>
+    <button mat-raised-button color="primary" (click)="irInicio()">
+      <mat-icon>arrow_forward</mat-icon> Volver a la tienda
+    </button>
+  </div>
+  }@else{
   <div class="detalle-compra">
     <div class="table" [@fadeInAnimation]>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -53,23 +61,26 @@
     <div class="total-orden">
       <h2>TOTAL DE LA ORDEN</h2>
       <div class="subtotal">
-        <p>Subtotal</p>
+        <p><strong>Subtotal</strong></p>
         <p>S/. 12312</p>
       </div>
       <mat-divider></mat-divider>
       <div class="gasto-envio">
-        <p>Gasto de envío</p>
+        <p><strong>Gasto de envío</strong></p>
         <p>S/. 17</p>
+        <p>Por favor, revisa el total a pagar antes de completar tu compra.</p>
       </div>
       <mat-divider></mat-divider>
       <div class="total">
-        <p>Total</p>
+        <p><strong>Total</strong></p>
         <p>S/. {{ totalCart }}</p>
       </div>
-      <button mat-raised-button color="primary">
-        <mat-icon>payments</mat-icon> PROCEDER A PAGAR
-      </button>
+      <div class="boton-pagar">
+        <button mat-raised-button color="primary" (click)="guardarOrden()">
+          <mat-icon>payments</mat-icon> PROCEDER A PAGAR
+        </button>
+      </div>
     </div>
   </div>
-  }
+  } }
 </div>

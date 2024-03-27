@@ -7,6 +7,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 import { Product } from '../../../interfaces/product';
 import { fadeInAnimation } from '../../../animations/fade-in.animation';
@@ -24,6 +25,7 @@ import { HandleProductoComponent } from './handle-producto/handle-producto.compo
     MatPaginatorModule,
     MatTooltipModule,
     MatMenuModule,
+    MatInputModule,
   ],
   animations: [fadeInAnimation],
   providers: [ProductService],
@@ -63,6 +65,18 @@ export class ProductosComponent {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  searchPostulante(searchQuery: string) {
+    this.loading = true;
+
+    this.productService
+      .getSearchProducto(searchQuery)
+      .subscribe((data: any) => {
+        this.dataSource.data = data.data;
+        this.total = data.meta.total;
+        this.loading = false;
+      });
   }
 
   openDialog(action: string, product?: Product): void {

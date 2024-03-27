@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
+import { Router } from '@angular/router';
 
 import { fadeInAnimation } from '../../animations/fade-in.animation';
 import { CartService } from '../../services/cart.service';
@@ -36,7 +37,7 @@ export class FinalizarCompraComponent {
   cantidadProducts: number = 0;
   totalCart: number = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
     this.cartService.getCart().subscribe((data: any) => {
@@ -53,5 +54,13 @@ export class FinalizarCompraComponent {
       this.totalCart = data;
       console.log(this.totalCart);
     });
+  }
+
+  irInicio() {
+    this.router.navigate(['/']);
+  }
+
+  guardarOrden() {
+    this.router.navigate(['/guardar-orden']);
   }
 }

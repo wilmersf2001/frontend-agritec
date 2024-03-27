@@ -58,8 +58,8 @@ export class HandleProductoComponent {
   form!: FormGroup;
   actionLoading: boolean = false;
   loading = false;
-  previewFotoCarnet!: string;
-  fileNameCarnet: string = '...';
+  previewFotoProducto!: string;
+  fileNameProducto: string = '...';
   fileData: any;
 
   constructor(
@@ -81,7 +81,7 @@ export class HandleProductoComponent {
           descripcion: ['', Validators.required],
           precio: ['', Validators.required],
           cantidad: ['', Validators.required],
-          foto_producto: [null],
+          foto_producto: ['', Validators.required],
           user_id: ['', Validators.required],
           category_id: ['', Validators.required],
         });
@@ -123,6 +123,12 @@ export class HandleProductoComponent {
   }
 
   submitForm(action: string): void {
+    if (this.form.invalid) {
+      return Object.values(this.form.controls).forEach((control) => {
+        control.markAsTouched();
+      });
+    }
+
     this.actionLoading = true;
     switch (action) {
       case ACTIONS.CREATE:
@@ -194,9 +200,9 @@ export class HandleProductoComponent {
       if (extension == 'jpg' || extension == 'jpeg' || extension == 'png') {
         const fotoArchivo = fileList[0];
 
-        this.fileNameCarnet = fotoArchivo.name;
+        this.fileNameProducto = fotoArchivo.name;
         fileReader.onload = () => {
-          this.previewFotoCarnet = fileReader.result as string;
+          this.previewFotoProducto = fileReader.result as string;
         };
         fileReader.readAsDataURL(fotoArchivo);
         this.fileData = fotoArchivo;
@@ -209,8 +215,8 @@ export class HandleProductoComponent {
 
   resetPreviewFoto() {
     this.form.get('foto_producto')?.setValue('');
-    this.previewFotoCarnet = '';
-    this.fileNameCarnet = 'selecciona un archivo..';
+    this.previewFotoProducto = '';
+    this.fileNameProducto = 'selecciona un archivo..';
   }
 
   openSnackBar() {

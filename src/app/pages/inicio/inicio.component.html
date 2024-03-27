@@ -24,7 +24,7 @@
           class="img-card"
           mat-card-image
           [src]="product.ruta_imagen"
-          alt="Photo of a Shiba Inu"
+          alt="Producto"
         />
         <mat-card-content>
           <mat-card-title>{{ product.nombre }}</mat-card-title>
@@ -40,9 +40,14 @@
           <button mat-raised-button (click)="detailsProduct(product.id)">
             <mat-icon>add</mat-icon> Detalles
           </button>
-          <button mat-raised-button color="primary">
-            <mat-icon>shopping_cart</mat-icon> Añadir al carrito
-          </button>
+          <form [formGroup]="form" (ngSubmit)="submitForm(product.id)">
+            <input type="hidden" formControlName="qty" />
+            <div class="botones">
+              <button mat-raised-button color="primary">
+                <mat-icon>shopping_cart</mat-icon> Añadir al carrito
+              </button>
+            </div>
+          </form>
         </mat-card-actions>
       </mat-card>
       }

@@ -1,4 +1,23 @@
 <div class="container">
+  <div class="options">
+    <div class="search">
+      <mat-form-field appearance="outline">
+        <mat-label>Buscar Producto</mat-label>
+        <input
+          type="search"
+          matInput
+          placeholder="Ingrese el código o nombre del producto"
+          #searchQuery
+          (keyup)="searchPostulante(searchQuery.value)"
+        />
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-hint>
+          Realice una búsqueda por código o nombre del producto
+        </mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+
   <div class="add">
     <button mat-raised-button color="primary" (click)="openDialog('CREATE')">
       <mat-icon>add</mat-icon> Agregar

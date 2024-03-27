@@ -12,6 +12,19 @@
     margin-top: 3rem;
   }
 
+  .carrito-vacio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    
+    .bolsa{
+      width: 150px;
+      height: 150px;
+      font-size: 150px;
+    }
+  }
+
   img{
     margin: .5rem 0;
   }
@@ -54,6 +67,37 @@
       padding: 1rem;
       border-radius: 22px;
 
+      .subtotal{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        p{
+          margin: 0;
+        }
+      }
+
+      .gasto-envio{
+        margin-top: .5rem;
+      }
+
+      .total{
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 0;
+        p{
+          margin: 0;
+        }
+      }
+
+      .boton-pagar{
+        width: 100%;
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        button{
+          width: 100%;
+        }
+      }
     }
   }
 }
